@@ -1,2 +1,3 @@
+fpr all
 hello
 world
