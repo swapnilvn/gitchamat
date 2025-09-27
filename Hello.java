@@ -21,4 +21,8 @@ class Hello{
         System.out.println("This is a test3 method");
     }
 
+    public static void test4(){
+        System.out.println("This is a test4 method");
+    }
+
 }
