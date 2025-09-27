@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ManiController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.mongo.crud</a>
+</div>
+
+<h1>Coverage Summary for Class: ManiController (com.mongo.crud)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ManiController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    28.6%
+  </span>
+  <span class="absValue">
+    (2/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    27.3%
+  </span>
+  <span class="absValue">
+    (3/11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.mongo.crud;
+&nbsp;
+&nbsp;import jakarta.servlet.http.HttpServletRequest;
+&nbsp;import lombok.extern.slf4j.Slf4j;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.List;
+<b class="fc">&nbsp;@Slf4j</b>
+&nbsp;@RestController
+&nbsp;public class ManiController {
+&nbsp;
+&nbsp;    private final ManiService maniService;
+&nbsp;
+<b class="fc">&nbsp;    public ManiController(ManiService maniService) {</b>
+<b class="fc">&nbsp;        this.maniService = maniService;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Define your endpoints here
+&nbsp;    @GetMapping(&quot;/manis&quot;)
+&nbsp;    public List&lt;Mani&gt; getAllManis() {
+<b class="nc">&nbsp;        return maniService.getAllManis();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/save&quot;)
+&nbsp;    public Mani saveMani(@RequestBody Mani mani) {
+<b class="nc">&nbsp;        return maniService.saveMani(mani);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/getManiByName&quot;)
+&nbsp;    public Mani getManiByName(@RequestHeader( value = &quot;X-Client-Id&quot;, required = false) String clientId, @RequestParam(&quot;name&quot;) String name) {
+<b class="nc">&nbsp;        logClientId(clientId);</b>
+<b class="nc">&nbsp;        return maniService.getManiByName(name);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/getManiByStore&quot;)
+&nbsp;    public List&lt;Mani&gt; getManiByStore(HttpServletRequest httpServletRequest) {
+<b class="nc">&nbsp;        String header = httpServletRequest.getHeader(&quot;X-Client-Id&quot;);</b>
+<b class="nc">&nbsp;        logClientId(header);</b>
+<b class="nc">&nbsp;        return maniService.getManiByStore( (null != header &amp;&amp; !header.isEmpty()) ? header : null);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void logClientId(String clientId) {
+<b class="nc">&nbsp;        log.info(&quot;X-Client-Id : {}&quot;, String.valueOf(clientId));</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-08-29 17:22</div>
+</div>
+</body>
+</html>
